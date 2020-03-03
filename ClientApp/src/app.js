@@ -16,6 +16,10 @@ new Vue({
             //}
 
             resolveComponent: name => import(`@/pages/${name}`).then(module => module.default)
+            //resolveComponent: function (name) {
+            //    debugger;
+            //    import(`@/pages/${name}`).then(module => module.default)
+            //}
         }
     })
 }).$mount(app);
