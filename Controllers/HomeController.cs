@@ -8,9 +8,11 @@ namespace InertiaJsTest.Controllers
     {
         public IActionResult Index()
         {
-            //var model = new Page{Component = "home/index/Index", Url = "/home/index"};
+            bool isInertiaRequest = bool.TryParse(Request.Headers["X-Inertia"], out _);
             var model = new Page{Component = "Home/Index", Url = "/home/index"};
-            return View(model);
+            return !isInertiaRequest 
+                ? (IActionResult) View(model) 
+                : Inertia.Render("Home/Index", new { });
         }
 
         public IActionResult SampleApi()
