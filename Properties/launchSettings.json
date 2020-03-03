@@ -28,7 +28,7 @@
         "Reload:Hmr": {
             "commandName": "Project",
             "commandLineArgs": "",
-            "launchBrowser": true,
+            "launchBrowser": false,
             "launchUrl": "http://localhost:8080/home/index",
             "environmentVariables": {
                 "ASPNETCORE_RELOAD": "HotModuleReload",

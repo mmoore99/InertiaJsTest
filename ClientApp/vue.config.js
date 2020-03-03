@@ -30,10 +30,14 @@ module.exports = {
     outputDir: "../wwwroot/dist/",
     publicPath: "/dist/",
     filenameHashing: false,
-    lintOnSave: true,
+    lintOnSave: false,
     devServer: {
         //progress: false
     
+    },
+
+    css: {
+        extract: true
     },
 
     configureWebpack:  {

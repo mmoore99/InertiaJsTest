@@ -1,34 +1,21 @@
+/* eslint-disable */
 import Vue from "vue";
-import NavBar from "@/components/NavBar.vue";
-import HelloWorld from "./HelloWorld.vue";
-Vue.config.productionTip = false;
+import { InertiaApp } from "@inertiajs/inertia-vue";
 
-window.fb = {
-    vueApp: null,
+Vue.use(InertiaApp);
 
-    initializePage() {
-        this.vueApp = this.initializeVue();
-    },
+const app = document.getElementById("app");
+//debugger;
+new Vue({
+    render: h => h(InertiaApp, {
+        props: {
+            initialPage: JSON.parse(app.dataset.page),
+            //resolveComponent: name => require(`@/pages/${name}`).default
+            //resolveComponent: name => {
+            //    debugger;
+            //}
 
-    initializeVue() {
-        const vue = new Vue({
-            el: "#app",
-            components: {
-                NavBar,
-                HelloWorld
-            },
-            data: {
-            },
-            created() {
-            },
-            mounted() {
-
-            },
-            methods: {
-            },
-            computed: {
-            }
-        });
-        return vue;
-    }
-};
+            resolveComponent: name => import(`@/pages/${name}`).then(module => module.default)
+        }
+    })
+}).$mount(app);

@@ -1,0 +1,33 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="app" class="">
+    <div class="">
+        <nav-bar></nav-bar>
+        <img alt="Vue logo" src="~/images/logo.png" />
+        <hello-world></hello-world>
+    </div>
+</div>
+
+@section scripts {
+    <link href="~/dist/css/home/index.css" rel="stylesheet" />
+    <script src="~/dist/js/home/index.js" asp-append-version="true"></script>
+
+    <script type="text/javascript">
+
+        function domReady() {
+            const _urls = {
+            };
+            // window.fb must be created and initialized in the corresponding index.js file
+            window.fb.initializePage(_urls);
+        }
+
+        if (document.readyState === "complete" || document.readyState !== "loading" && !document.documentElement.doScroll) {
+            domReady();
+        } else {
+            document.addEventListener("DOMContentLoaded", domReady);
+        }
+
+    </script>
+}

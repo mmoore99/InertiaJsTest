@@ -56,6 +56,8 @@
     <Folder Include="Helpers\Http\" />
     <Folder Include="Helpers\Notifiers\" />
     <Folder Include="Helpers\Parsers\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\Pages\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

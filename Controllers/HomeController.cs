@@ -1,3 +1,4 @@
+using InertiaAdapter.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InertiaJsTest.Controllers
@@ -6,7 +7,8 @@ namespace InertiaJsTest.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new Page{Component = "home/index/App", Url = "/home/index"};
+            return View(model);
         }
 
         public IActionResult SampleApi()
