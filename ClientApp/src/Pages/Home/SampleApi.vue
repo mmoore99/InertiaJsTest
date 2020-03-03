@@ -1,5 +1,5 @@
 <template>
-    <div class="sample-api">
+    <div id="SampleApi" class="sample-api">
         <nav-bar></nav-bar>
 
         <h1>Sample page fetching data from the SampleDataController</h1>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import NavBar from "@/components/NavBar.vue";
+    import NavBar from "@/Components/NavBar.vue";
     export default {
         name: "sample-api",
         components: {
@@ -43,6 +43,14 @@
 </script>
 
 <style scoped>
+    #SampleApi {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+
     .values-list {
         list-style: none;
     }

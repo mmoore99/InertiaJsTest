@@ -1,8 +1,8 @@
 ﻿<template>
     <div id="nav">
-        <a href="/Home/Index">Home</a>  |
-        <a href="/Home/SampleApi">Sample API</a>  |
-        <a href="/Home/About">About</a>
+        <inertia-link href="/Home/Index">Home</inertia-link>  |
+        <inertia-link href="/Home/SampleApi">Sample API</inertia-link>  |
+        <inertia-link href="/Home/About">About</inertia-link>
     </div>
 </template>
 

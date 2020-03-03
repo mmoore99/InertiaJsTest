@@ -35,7 +35,7 @@ module.exports = {
     },
 
     css: {
-        extract: true
+        //extract: true
     },
 
     configureWebpack: config => {

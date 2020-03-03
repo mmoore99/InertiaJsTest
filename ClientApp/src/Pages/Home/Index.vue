@@ -12,11 +12,11 @@
 
     // @ is an alias to /src
     //import HelloWorld from '@/components/HelloWorld.vue'
-    import NavBar from "@/components/NavBar.vue";
+    import NavBar from "@/Components/NavBar.vue";
     import HelloWorld from "./HelloWorld.vue";
 
     export default {
-        name: "App",
+        name: "Index",
         props: {
 
         },
