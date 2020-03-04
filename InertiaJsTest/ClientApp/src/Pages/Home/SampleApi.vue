@@ -20,6 +20,12 @@
         components: {
                 NavBar
         },
+        props: {
+            msg: String,
+            msgShare1: String,
+            msgShare2: String
+        },
+    
         data() {
             return {
                 values: []

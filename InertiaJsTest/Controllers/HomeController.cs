@@ -17,6 +17,8 @@ namespace InertiaJsTest.Controllers
 
         public IActionResult SampleApi()
         {
+            //Inertia.Share = new {MsgShare1 = "this is share 1 message", MsgShare2 = "this is share 2 message"};
+            //return Inertia.Render("Home/SampleApi", new {Msg = "this is the message"});
             return Inertia.Render("Home/SampleApi", new {});
         }
     }

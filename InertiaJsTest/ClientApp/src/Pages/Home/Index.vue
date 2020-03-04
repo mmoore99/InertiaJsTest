@@ -1,7 +1,7 @@
 ﻿<template>
     <div id="App">
         <div class="">
-            <nav-bar></nav-bar>
+            <!--<nav-bar></nav-bar>-->
             <img alt="Vue logo" src="/images/logo.png" />
             <hello-world></hello-world>
         </div>
@@ -17,6 +17,7 @@
 
     export default {
         name: "Index",
+        layout: NavBar,
         props: {
 
         },

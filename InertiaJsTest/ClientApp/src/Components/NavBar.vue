@@ -1,8 +1,13 @@
 ﻿<template>
-    <div id="nav">
-        <inertia-link href="/Home/Index">Home</inertia-link>  |
-        <inertia-link href="/Home/SampleApi">Sample API</inertia-link>  |
-        <inertia-link href="/Home/About">About</inertia-link>
+    <div class="single-root-element">
+        <div id="App" class="app-slot">
+            <div id="nav">
+                <inertia-link href="/Home/Index">Home</inertia-link>  |
+                <inertia-link href="/Home/SampleApi">Sample API</inertia-link>  |
+                <inertia-link href="/Home/About">About</inertia-link>
+            </div>
+            <slot />
+        </div>
     </div>
 </template>
 
@@ -21,7 +26,6 @@
         },
         data() {
             return {
-
             };
         },
         created() {
@@ -44,7 +48,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  #app {
+  #App {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
