@@ -8,7 +8,7 @@ namespace InertiaAdapter.Core
 {
     internal class ResultFactory : IResultFactory
     {
-        public object? Share { get; set; }
+        public object Share { get; set; } = new {};
         private string _rootView = "Views/App.cshtml";
         private object? _version;
 

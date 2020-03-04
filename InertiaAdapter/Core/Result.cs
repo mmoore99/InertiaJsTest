@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TypeMerger;
 
 namespace InertiaAdapter.Core
 {
@@ -67,13 +68,18 @@ namespace InertiaAdapter.Core
             return new JsonResult(_page);
         }
 
-        private void ConstructPage() => _page = new Page
+        private void ConstructPage()
         {
-            Props = _props,
-            Component = _component,
-            Version = _version,
-            Url = _context.RequestedUri()
-        };
+            var props = TypeMerger.TypeMerger.Merge(_props.Controller, _props.Share);
+            props = TypeMerger.TypeMerger.Merge(props, _props.With);
+            _page = new Page
+            {
+                Props = props,
+                Component = _component,
+                Version = _version,
+                Url = _context.RequestedUri()
+            };
+        }
 
         private IActionResult GetResult() =>
             IsInertiaRequest() ? (IActionResult) Json() : View();

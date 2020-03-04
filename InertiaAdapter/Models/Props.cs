@@ -2,8 +2,8 @@
 {
     public class Props
     {
-        public object? Controller { get; set; }
-        public object? Share { get; set; }
-        public object? With { get; set; }
+        public object Controller { get; set; } = new { };
+        public object Share { get; set; } = new { };
+        public object With { get; set; } = new { };
     }
 }
