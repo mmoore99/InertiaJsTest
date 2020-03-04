@@ -1,33 +1,29 @@
 ﻿<template>
-    <div id="App">
-        <div class="">
-            <!--<nav-bar></nav-bar>-->
-            <img alt="Vue logo" src="/images/logo.png" />
-            <hello-world></hello-world>
-        </div>
+    <div class="about">
+        <h1>This is an about page</h1>
+        <h2>{{ msg }}</h2>
     </div>
 </template>
+
 
 <script>
 
     // @ is an alias to /src
     //import HelloWorld from '@/components/HelloWorld.vue'
     import NavBar from "@/Components/NavBar.vue";
-    import HelloWorld from "./HelloWorld.vue";
 
     const EventIds = {
             newPageLoaded: "new-page-loaded",
-        };
+    };
 
     export default {
-        name: "Index",
+        name: "About",
         layout: NavBar,
         props: {
-
+            msg: String
         },
         components: {
-            NavBar,
-            HelloWorld
+
         },
         data() {
             return {
@@ -53,13 +49,4 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-  #App {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
-
 </style>

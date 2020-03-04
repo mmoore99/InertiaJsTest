@@ -1,7 +1,5 @@
 <template>
     <div id="SampleApi" class="sample-api">
-        <nav-bar></nav-bar>
-
         <h1>Sample page fetching data from the SampleDataController</h1>
         <h3>These are the initial values:</h3>
         <ul class="values-list">
@@ -17,6 +15,7 @@
     import NavBar from "@/Components/NavBar.vue";
     export default {
         name: "sample-api",
+        layout: NavBar,
         components: {
                 NavBar
         },
