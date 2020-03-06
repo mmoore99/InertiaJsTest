@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TypeMerger;
 
 namespace InertiaAdapter.Core
 {
@@ -34,7 +33,7 @@ namespace InertiaAdapter.Core
             return this;
         }
 
-        public async Task ExecuteResultAsync(ActionContext context)
+        public Task ExecuteResultAsync(ActionContext context)
         {
             SetContext(context);
 
@@ -45,7 +44,7 @@ namespace InertiaAdapter.Core
 
             ConstructPage();
 
-            await GetResult().ExecuteResultAsync(_context);
+            return GetResult().ExecuteResultAsync(_context);
         }
 
         private object InvokeIfLazy(IEnumerable<string> str) =>
@@ -70,19 +69,16 @@ namespace InertiaAdapter.Core
 
         private void ConstructPage()
         {
-            var props = TypeMerger.TypeMerger.Merge(_props.Controller, _props.Share);
-            props = TypeMerger.TypeMerger.Merge(props, _props.With);
             _page = new Page
             {
-                Props = props,
+                Props = _props.MergedProps,
                 Component = _component,
                 Version = _version,
                 Url = _context.RequestedUri()
             };
         }
 
-        private IActionResult GetResult() =>
-            IsInertiaRequest() ? (IActionResult) Json() : View();
+        private IActionResult GetResult() => IsInertiaRequest() ? (IActionResult) Json() : View();
 
 
         private (bool, IList<string>) PartialRequest()

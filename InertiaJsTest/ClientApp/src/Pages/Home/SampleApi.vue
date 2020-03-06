@@ -13,8 +13,10 @@
 
 <script>
     import NavBar from "@/Components/NavBar.vue";
+    import { store } from "../../store.js";
+
     export default {
-        name: "sample-api",
+        name: "SampleApi",
         layout: NavBar,
         components: {
                 NavBar
@@ -31,6 +33,8 @@
             };
         },
         created() {
+            store.setCurrentPageAction("Home/SampleApi");
+
             // Send request to the ASP.NET Core application.
             // No need to specify the host:port since it all runs from the same location
             return fetch("/api/SampleData/WeatherForecasts")

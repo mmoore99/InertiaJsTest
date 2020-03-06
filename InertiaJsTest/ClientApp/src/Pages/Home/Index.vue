@@ -11,13 +11,9 @@
 <script>
 
     // @ is an alias to /src
-    //import HelloWorld from '@/components/HelloWorld.vue'
     import NavBar from "@/Components/NavBar.vue";
     import HelloWorld from "./HelloWorld.vue";
-
-    const EventIds = {
-            newPageLoaded: "new-page-loaded",
-        };
+    import { store } from "../../store.js";
 
     export default {
         name: "Index",
@@ -31,11 +27,13 @@
         },
         data() {
             return {
-
+                fb,
+                storeState: store.state,
+                protoState: this.$store.state
             };
         },
         created() {
-            this.$root.$emit(EventIds.newPageLoaded, this.$options.name);
+            store.setCurrentPageAction("Home/Index");
         },
         mounted() {
 

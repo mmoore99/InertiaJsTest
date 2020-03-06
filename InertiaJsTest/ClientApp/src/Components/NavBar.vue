@@ -6,6 +6,9 @@
                 <inertia-link href="/Home/SampleApi">Sample API</inertia-link>  |
                 <inertia-link href="/Home/About">About</inertia-link>
             </div>
+            <div>
+                <h2>{{ storeState.currentPage }}</h2>
+            </div>
             <slot />
         </div>
     </div>
@@ -14,11 +17,7 @@
 <script>
 
     // @ is an alias to /src
-    //import HelloWorld from '@/components/HelloWorld.vue'
-
-    const EventIds = {
-        newPageLoaded: "new-page-loaded",
-    };
+    import { store } from "../store.js";
 
     export default {
         name: "NavBar",
@@ -30,12 +29,13 @@
         },
         data() {
             return {
+                currentPage: store.state.currentPage,
+                storeState: store.state,
+                protoState: this.$store.state
             };
         },
         created() {
-            this.$root.$on(EventIds.newPageLoaded, (pageName) => {
-                console.log(`New page loaded: pageName=${pageName}`);
-            });
+            console.log(fb);
         },
         mounted() {
 

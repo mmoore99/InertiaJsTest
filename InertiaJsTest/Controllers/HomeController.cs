@@ -1,31 +1,34 @@
 using InertiaAdapter;
 using InertiaAdapter.Models;
+using InertiaJsTest.Helpers.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InertiaJsTest.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : MyBaseController
     {
-        public IActionResult Index()
+        public IActionResult Index(string redirectComponent)
         {
-            bool isInertiaRequest = bool.TryParse(Request.Headers["X-Inertia"], out _);
-            var model = new Page {Component = "Home/Index", Url = "/home/index"};
-            return !isInertiaRequest
+            var component = redirectComponent.IsEmpty()
+                ? "Home/Index"
+                : redirectComponent;
+
+            var model = new Page {Component = component, Url = component};
+            
+            return !IsInertiaRequest
                 ? (IActionResult) View(model)
                 : Inertia.Render("Home/Index", new { });
         }
 
         public IActionResult SampleApi()
         {
-            //Inertia.Share = new {MsgShare1 = "this is share 1 message", MsgShare2 = "this is share 2 message"};
-            //return Inertia.Render("Home/SampleApi", new {Msg = "this is the message"});
-            return Inertia.Render("Home/SampleApi", new { });
+            return InertiaResultOrRedirect("Home/SampleApi");
         }
 
         public IActionResult About()
         {
-            //Inertia.Share = new {MsgShare1 = "this is share 1 message", MsgShare2 = "this is share 2 message"};
-            return Inertia.Render("Home/About", new {Msg = "this is a message from a prop"});
+            Inertia.Share = new {MsgShare1 = "this is share 1 message", MsgShare2 = "this is share 2 message"};
+            return InertiaResultOrRedirect("Home/About", new { Msg = "this is a message from a prop" });
         }
     }
 }

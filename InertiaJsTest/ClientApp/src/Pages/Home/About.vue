@@ -2,6 +2,8 @@
     <div class="about">
         <h1>This is an about page</h1>
         <h2>{{ msg }}</h2>
+        <h2>{{ msgShare1 }}</h2>
+        <h2>{{ msgShare2 }}</h2>
     </div>
 </template>
 
@@ -9,32 +11,29 @@
 <script>
 
     // @ is an alias to /src
-    //import HelloWorld from '@/components/HelloWorld.vue'
     import NavBar from "@/Components/NavBar.vue";
-
-    const EventIds = {
-            newPageLoaded: "new-page-loaded",
-    };
+    import { store } from "../../store.js";
 
     export default {
         name: "About",
         layout: NavBar,
         props: {
-            msg: String
+            msg: String,
+            msgShare1: String,
+            msgShare2: String
         },
         components: {
 
         },
         data() {
             return {
-
+                storeState: store.state,
             };
         },
         created() {
-            this.$root.$emit(EventIds.newPageLoaded, this.$options.name);
         },
         mounted() {
-
+            store.setCurrentPageAction("Home/About");
         },
         methods: {
 
