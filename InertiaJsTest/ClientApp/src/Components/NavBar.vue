@@ -2,7 +2,7 @@
     <div class="single-root-element">
         <div id="App" class="app-slot">
             <div id="nav">
-                <inertia-link href="/Home/Index">Home</inertia-link>  |
+                <inertia-link href="/Home/Index" :class="{'current-page': isCurrentPage('Home/Index')}">Home</inertia-link>  |
                 <inertia-link href="/Home/SampleApi">Sample API</inertia-link>  |
                 <inertia-link href="/Home/About">About</inertia-link>
             </div>
@@ -41,7 +41,10 @@
 
         },
         methods: {
-
+            isCurrentPage(pageName) {
+                debugger;
+                return pageName === this.currentPage;
+            }
         },
 
         computed: {
@@ -74,4 +77,7 @@
             #nav a.router-link-exact-active {
                 color: #42b983;
             }
+    .current-page {
+        color: green;
+    }
 </style>

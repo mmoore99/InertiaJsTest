@@ -56,6 +56,7 @@
     <Folder Include="Helpers\Http\" />
     <Folder Include="Helpers\Notifiers\" />
     <Folder Include="Helpers\Parsers\" />
+    <Folder Include="wwwroot\dist\js\" />
   </ItemGroup>
 
   <ItemGroup>
